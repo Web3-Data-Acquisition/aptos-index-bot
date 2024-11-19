@@ -43,4 +43,4 @@ RUN npx prisma generate
 USER node
 
 # 启动应用
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start:force"]
