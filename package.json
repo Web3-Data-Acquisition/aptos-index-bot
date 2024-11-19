@@ -29,7 +29,7 @@
     "@grammyjs/i18n": "1.0.2",
     "@grammyjs/menu": "^1.2.1",
     "@grammyjs/parse-mode": "1.9.0",
-    "@grammyjs/types": "3.5.2",
+    "@grammyjs/types": "3.16.0",
     "@prisma/client": "^5.13.0",
     "@raydium-io/raydium-sdk": "^1.2.0-beta.8",
     "@solana/spl-token": "^0.4.6",
