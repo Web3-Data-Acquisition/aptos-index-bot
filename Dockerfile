@@ -14,7 +14,7 @@ FROM base AS builder
 COPY package*.json ./
 
 # 安装所有依赖，包括 devDependencies
-RUN npm install
+RUN pnpm install
 
 # 复制项目的所有源文件到工作目录中
 COPY . .
@@ -43,4 +43,4 @@ RUN npx prisma generate
 USER node
 
 # 启动应用
-CMD ["npm", "run", "start:force"]
+CMD ["npm", "run", "dev"]
