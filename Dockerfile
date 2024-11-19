@@ -37,8 +37,8 @@ RUN pnpm install
 # 复制项目的所有源文件到工作目录中
 COPY . .
 
-# 运行 Prisma generate
-RUN npx prisma generate
+# # 运行 Prisma generate
+# RUN npx prisma generate
 
 # 切换到非 root 用户
 USER node
