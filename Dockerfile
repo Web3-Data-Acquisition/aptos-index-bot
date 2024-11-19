@@ -12,7 +12,7 @@ FROM base AS builder
 
 # 将 package.json 和 package-lock.json 复制到工作目录中
 COPY package*.json ./
-
+RUN npm install -g pnpm
 # 安装所有依赖，包括 devDependencies
 RUN pnpm install
 
