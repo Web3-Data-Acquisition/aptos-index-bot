@@ -43,7 +43,7 @@
     "cross-fetch": "^4.0.0",
     "dotenv": "16.4.5",
     "fastify": "4.26.2",
-    "grammy": "1.27.0",
+    "grammy": "1.32.0",
     "grammy-guard": "0.5.0",
     "hono": "4.6.5",
     "ioredis": "^5.4.1",
