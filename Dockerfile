@@ -31,7 +31,8 @@ FROM base AS runner
 COPY package*.json ./
 
 # 安装仅生产环境需要的依赖
-RUN pnpm ci --omit=dev 
+RUN npm install -g pnpm
+RUN pnpm install
 
 # 复制项目的所有源文件到工作目录中
 COPY . .
