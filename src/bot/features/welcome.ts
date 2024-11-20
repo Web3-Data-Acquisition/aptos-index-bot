@@ -121,55 +121,55 @@ feature.command('start', logHandle('command-start'), async (ctx) => {
                 break // 根据控制变量决定是否退出外层循环
               }
             }
-            else if ('pool' in (value_into as object)) {
-              interface SwapEventData {
-                pool?: string
-                to_token?: string
-                amount_in?: number
-                amount_out?: number
-                from_token?: string
-              }
-              const eventData = value_into as SwapEventData
+            // else if ('pool' in (value_into as object)) {
+            //   interface SwapEventData {
+            //     pool?: string
+            //     to_token?: string
+            //     amount_in?: number
+            //     amount_out?: number
+            //     from_token?: string
+            //   }
+            //   const eventData = value_into as SwapEventData
 
-              // eslint-disable-next-line no-console
-              console.log(`eventData: ${eventData}`)
+            //   // eslint-disable-next-line no-console
+            //   console.log(`eventData: ${eventData}`)
 
-              if (eventData.from_token !== undefined && eventData.to_token !== undefined) {
-                const result_from = checkLastFourCharsForSubstrings(eventData.from_token, ['USDC', 'USDT', 'WBTC', 'WETH'])
-                const result_to = checkLastFourCharsForSubstrings(eventData.to_token, ['USDC', 'USDT', 'WBTC', 'WETH'])
+            //   if (eventData.from_token !== undefined && eventData.to_token !== undefined) {
+            //     const result_from = checkLastFourCharsForSubstrings(eventData.from_token, ['USDC', 'USDT', 'WBTC', 'WETH'])
+            //     const result_to = checkLastFourCharsForSubstrings(eventData.to_token, ['USDC', 'USDT', 'WBTC', 'WETH'])
 
-                if (result_from || result_to) {
-                  shouldBreak = true // 设置控制变量
-                  break // 退出当前循环
-                }
-                else {
-                  if (eventData.amount_in !== undefined && eventData.amount_out !== undefined && eventData.pool !== undefined) {
-                    // 获取aptos的价格
-                    const aptPrice = await getAptPrice()
-                    if (aptPrice !== undefined) {
-                      // eslint-disable-next-line no-console
-                      console.log(`Current APT Price: $${aptPrice}`)
-                      const unrealizedProfit = 'gui'
-                      const finalPrice = await calculateCoinPrice(eventData.amount_in, eventData.amount_out, aptPrice)
+            //     if (result_from || result_to) {
+            //       shouldBreak = true // 设置控制变量
+            //       break // 退出当前循环
+            //     }
+            //     else {
+            //       if (eventData.amount_in !== undefined && eventData.amount_out !== undefined && eventData.pool !== undefined) {
+            //         // 获取aptos的价格
+            //         const aptPrice = await getAptPrice()
+            //         if (aptPrice !== undefined) {
+            //           // eslint-disable-next-line no-console
+            //           console.log(`Current APT Price: $${aptPrice}`)
+            //           const unrealizedProfit = 'gui'
+            //           const finalPrice = await calculateCoinPrice(eventData.amount_in, eventData.amount_out, aptPrice)
 
-                      const tokenMessage
-                      = `|--- The current prices of aptos are: $${aptPrice} \n`
-                      + `|--- The current currency pair is: ${unrealizedProfit} \n`
-                      + `|--- The current currency pair pool is: ${eventData.pool}\n`
-                      + `|--- The current price of the currency pair is: $${finalPrice}\n`
+            //           const tokenMessage
+            //           = `|--- The current prices of aptos are: $${aptPrice} \n`
+            //           + `|--- The current currency pair is: ${unrealizedProfit} \n`
+            //           + `|--- The current currency pair pool is: ${eventData.pool}\n`
+            //           + `|--- The current price of the currency pair is: $${finalPrice}\n`
 
-                      await ctx.reply(tokenMessage)
-                    }
-                  }
-                }
-              }
+            //           await ctx.reply(tokenMessage)
+            //         }
+            //       }
+            //     }
+            //   }
 
-              if (shouldBreak) {
-                // eslint-disable-next-line no-console
-                console.log(`222222222222222222`)
-                break // 根据控制变量决定是否退出外层循环
-              }
-            }
+            //   if (shouldBreak) {
+            //     // eslint-disable-next-line no-console
+            //     console.log(`222222222222222222`)
+            //     break // 根据控制变量决定是否退出外层循环
+            //   }
+            // }
           }
         }
 
