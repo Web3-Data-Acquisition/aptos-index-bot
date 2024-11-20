@@ -1,13 +1,28 @@
 import pgLib from 'pg'
 
+import dotenv from 'dotenv'
+
+dotenv.config()
+
 const { Pool } = pgLib
 
+// const pool = new Pool({
+// user: 'postgres',
+// host: '127.0.0.1',
+// database: 'postgres',
+// password: 'postgres',
+// port: 5432,
+// })
 const pool = new Pool({
-  user: 'postgres',
-  host: '127.0.0.1',
-  database: 'postgres',
-  password: 'postgres',
+  // eslint-disable-next-line node/prefer-global/process
+  host: process.env.DB_HOST,
   port: 5432,
+  // eslint-disable-next-line node/prefer-global/process
+  user: process.env.DB_USER,
+  // eslint-disable-next-line node/prefer-global/process
+  password: process.env.DB_PASSWORD,
+  // eslint-disable-next-line node/prefer-global/process
+  database: process.env.DB_NAME,
 })
 
 export async function fetchData(): Promise< object | undefined> {
