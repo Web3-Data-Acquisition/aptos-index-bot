@@ -6,7 +6,8 @@ export async function getAptPrice(): Promise<number | undefined> {
 
   try {
     const response = await axios.get(url)
-    return Number.parseFloat(response.data)
+
+    return Number.parseFloat(response.data.data)
   }
   catch (error) {
     console.error('Error fetching APT price:', error)
