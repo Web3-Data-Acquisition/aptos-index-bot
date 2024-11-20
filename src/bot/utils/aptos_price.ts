@@ -9,7 +9,7 @@ export async function getAptPrice(): Promise<number | undefined> {
     protocol: 'http', // 如果你的代理支持 https，这里也可以是 'https'
   }
   try {
-    const response = await axios.get(url, { proxy: proxyConfig })
+    const response = await axios.get(url, { proxy: proxyConfig, maxRedirects: 0 })
     return Number.parseFloat(response.data.price)
   }
   catch (error) {
