@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "2.26.0",
-    "@types/node": "^20.14.12",
+    "@types/node": "^22.10.1",
     "@types/pg": "^8.11.10",
     "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "8.1.0",
